@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("/events")
+    @GET("coins/list")
     suspend fun getListCoins(): List<Coins>
 }

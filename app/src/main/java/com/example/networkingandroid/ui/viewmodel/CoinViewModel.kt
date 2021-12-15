@@ -19,7 +19,11 @@ class CoinViewModel(private val repository: CoinsRepositoryInterface) : ViewMode
         viewModelScope.launch {
             try {
                 mCoinsLiveData.value = repository.getList()
+                println("+++++++++++++++++++++++++++++++++++++++++++++++")
+                println("LISTA COINSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+                println("+++++++++++++++++++++++++++++++++++++++++++++++")
             } catch (e: Exception) {
+                e.printStackTrace()
                 mErrorGetCoin.value = true
             }
             isLoading.value = false

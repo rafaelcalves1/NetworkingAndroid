@@ -47,6 +47,7 @@ dependencies {
     def logging_version = "4.2.2"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-jackson:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:okhttp:$logging_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_version"
 

@@ -16,10 +16,13 @@ class MainActivity : AppCompatActivity() {
 
     private val mViewModel: CoinViewModel by viewModel()
 
+    private val adapter = RecyclerViewCoinAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.mainActivityRecyclerViewCoins.adapter = adapter
         initRecycler()
         configClick()
     }
@@ -36,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     private fun initRecycler() {
         mViewModel.mCoinsLiveData.observe(this, Observer {
             it?.let { coins ->
-                binding.mainActivityRecyclerViewCoins.adapter = RecyclerViewCoinAdapter(coins)
+                adapter.atualizaCoins(coins)
             }
         })
     }

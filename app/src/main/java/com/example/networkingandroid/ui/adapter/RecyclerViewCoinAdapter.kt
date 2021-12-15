@@ -1,15 +1,16 @@
 package com.example.networkingandroid.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.networkingandroid.data.model.Coins
 import com.example.networkingandroid.databinding.ItemCoinsBinding
 
-class RecyclerViewCoinAdapter(private val coins: List<Coins>) :
+class RecyclerViewCoinAdapter :
     RecyclerView.Adapter<RecyclerViewCoinAdapter.RecyclerViewHolder>() {
 
-
+    private var coins = mutableListOf<Coins>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,9 +22,15 @@ class RecyclerViewCoinAdapter(private val coins: List<Coins>) :
     }
 
     override fun getItemCount(): Int {
-        return coins.count()
+        return coins.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun atualizaCoins(coins: List<Coins>){
+        this.coins.clear()
+        this.coins.addAll(coins)
+        notifyDataSetChanged()
+    }
 
     inner class RecyclerViewHolder(private val binding: ItemCoinsBinding) :
         RecyclerView.ViewHolder(binding.root) {

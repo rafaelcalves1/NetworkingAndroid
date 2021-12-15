@@ -7,8 +7,9 @@ class CoinsRepositoryImpl(private val retrofitService: RetrofitService) : CoinsR
 
     override suspend fun getList(): List<Coins>? {
         return try {
-            retrofitService.service.getListCoins()
+            retrofitService.apiService.getListCoins()
         } catch (e: Exception) {
+            e.printStackTrace()
             null
         }
     }
