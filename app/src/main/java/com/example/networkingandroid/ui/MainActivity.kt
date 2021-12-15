@@ -3,8 +3,8 @@ package com.example.networkingandroid.ui
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.networkingandroid.databinding.ActivityMainBinding
 import com.example.networkingandroid.ui.adapter.RecyclerViewCoinAdapter
 import com.example.networkingandroid.ui.viewmodel.CoinViewModel
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val mViewModel: CoinViewModel by viewModel()
+    private val viewModel: CoinViewModel by viewModel()
 
     private val adapter = RecyclerViewCoinAdapter()
 
@@ -25,24 +25,36 @@ class MainActivity : AppCompatActivity() {
         binding.mainActivityRecyclerViewCoins.adapter = adapter
         initRecycler()
         configClick()
+        showLoading()
+        showError()
     }
 
 
     private fun configClick() {
         binding.mainActivityButton.setOnClickListener {
-            mViewModel.getCoins()
+            viewModel.getCoins()
             binding.mainActivityButton.visibility = View.GONE
             binding.mainActivityLayoutRecycler.visibility = View.VISIBLE
         }
     }
 
     private fun initRecycler() {
-        mViewModel.mCoinsLiveData.observe(this, Observer {
+        viewModel.mCoinsLiveData.observe(this, Observer {
             it?.let { coins ->
                 adapter.atualizaCoins(coins)
             }
         })
     }
 
+    private fun showLoading() {
+        viewModel.isLoading.observe(this, Observer {
+            binding.mainActivityError.root.isVisible = it
+        })
+    }
 
+    private fun showError() {
+        viewModel.mErrorGetCoin.observe(this, Observer {
+            binding.mainActivityError.root.isVisible = it
+        })
+    }
 }

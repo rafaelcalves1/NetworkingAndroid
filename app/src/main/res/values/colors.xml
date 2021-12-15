@@ -11,5 +11,5 @@
     <color name="gray">#FAFAFA</color>
     <color name="red">#D80101</color>
     <color name="transparente">#00D80101</color>
-    <color name="defa">#F4F4F4</color>
+    <color name="defaul">#F4F4F4</color>
 </resources>

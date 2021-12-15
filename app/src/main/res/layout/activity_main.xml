@@ -7,6 +7,18 @@
     android:background="@color/black_weak"
     >
 
+    <include
+        android:id="@+id/main_activity_loading"
+        layout="@layout/loading"
+        android:visibility="gone"
+        />
+
+    <include
+        android:id="@+id/main_activity_error"
+        layout="@layout/error"
+        android:visibility="gone"
+        />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/main_activity_button"
         android:layout_width="150dp"
