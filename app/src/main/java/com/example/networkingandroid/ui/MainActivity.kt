@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainActivityButton.setOnClickListener {
             viewModel.getCoins()
             binding.mainActivityButton.visibility = View.GONE
+            binding.mainActivityLogo.visibility = View.GONE
             binding.mainActivityLayoutRecycler.visibility = View.VISIBLE
         }
     }
