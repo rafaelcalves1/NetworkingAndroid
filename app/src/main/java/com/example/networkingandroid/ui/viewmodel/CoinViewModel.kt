@@ -13,12 +13,12 @@ class CoinViewModel(private val repository: CoinsRepositoryInterface) : ViewMode
     val mErrorGetCoin: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun getCoins() {
+    fun getCoins(currency: String) {
         isLoading.value = true
         mErrorGetCoin.value = false
         viewModelScope.launch {
             try {
-                mCoinsLiveData.value = repository.getList()
+                mCoinsLiveData.value = repository.getList(currency)
             } catch (e: Exception) {
                 e.printStackTrace()
                 mErrorGetCoin.value = true

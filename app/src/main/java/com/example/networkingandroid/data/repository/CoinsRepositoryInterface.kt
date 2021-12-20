@@ -4,5 +4,7 @@ import com.example.networkingandroid.data.model.Coins
 
 interface CoinsRepositoryInterface {
 
-    suspend fun getList(): List<Coins>?
+    suspend fun getList(
+        currency: String
+    ): List<Coins>?
 }

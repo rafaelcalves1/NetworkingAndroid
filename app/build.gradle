@@ -63,6 +63,10 @@ dependencies {
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
+    //Picasso
+    def picasso_version= "2.71828"
+    implementation "com.squareup.picasso:picasso:$picasso_version"
+
 
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

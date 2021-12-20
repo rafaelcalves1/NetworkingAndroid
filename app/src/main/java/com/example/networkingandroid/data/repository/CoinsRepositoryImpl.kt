@@ -5,9 +5,9 @@ import com.example.networkingandroid.data.networking.RetrofitService
 
 class CoinsRepositoryImpl(private val retrofitService: RetrofitService) : CoinsRepositoryInterface {
 
-    override suspend fun getList(): List<Coins>? {
+    override suspend fun getList(currency: String): List<Coins>? {
         return try {
-            retrofitService.apiService.getListCoins()
+            retrofitService.apiService.getListCoins(currency)
         } catch (e: Exception) {
             e.printStackTrace()
             null

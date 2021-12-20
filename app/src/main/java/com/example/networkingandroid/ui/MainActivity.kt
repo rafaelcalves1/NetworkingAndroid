@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun configClick() {
         binding.mainActivityButton.setOnClickListener {
-            viewModel.getCoins()
+            viewModel.getCoins("brl")
             binding.mainActivityButton.visibility = View.GONE
             binding.mainActivityLogo.visibility = View.GONE
             binding.mainActivityLayoutRecycler.visibility = View.VISIBLE
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showLoading() {
         viewModel.isLoading.observe(this, Observer {
-            binding.mainActivityError.root.isVisible = it
+            binding.mainActivityLoading.root.isVisible = it
         })
     }
 

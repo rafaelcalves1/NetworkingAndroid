@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.networkingandroid.data.model.Coins
 import com.example.networkingandroid.databinding.ItemCoinsBinding
+import com.squareup.picasso.Picasso
 
 class RecyclerViewCoinAdapter :
     RecyclerView.Adapter<RecyclerViewCoinAdapter.RecyclerViewHolder>() {
@@ -26,7 +27,7 @@ class RecyclerViewCoinAdapter :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun atualizaCoins(coins: List<Coins>){
+    fun atualizaCoins(coins: List<Coins>) {
         this.coins.clear()
         this.coins.addAll(coins)
         notifyDataSetChanged()
@@ -38,6 +39,7 @@ class RecyclerViewCoinAdapter :
         fun bindView(coins: Coins) {
             binding.itemCoinsTxtNameCoin.text = coins.name
             binding.itemCoinsTxtSymbolCoin.text = coins.symbol
+            Picasso.get().load(coins.image).into(binding.itemCoinsImgCoin)
         }
 
     }
